@@ -31,15 +31,17 @@ No recommendation may enter an analysis or visualization until it has been trace
 
 ## Current Status
 
-The repository is currently being stabilized and prepared for structured source extraction.
+The repository is currently in structured source extraction. SRC0001 — Endocrine Society has reached the completion-audit stage: its source metadata and all 18 recommendation records are human verified.
 
 At this stage:
 
-* No source recommendations have been verified.
-* No research dataset has been completed.
-* No comparative analysis has been performed.
+* WPATH and UCSF extraction have not yet been completed, so the overall multi-source dataset remains incomplete.
+* Cross-source comparative analysis has not yet been completed.
 * No visualization has been approved.
+* `FINDINGS.md` must not be created or populated with study findings unless the release conditions in Protocol Amendment 0.4 are met.
 * No citation metadata, release, DOI, or Zenodo archive should be created.
+
+Human verification records documentary fidelity. It does not establish that recommendations are clinically correct, mutually comparable, or consensus guidance.
 
 ## Current Script
 
