@@ -362,10 +362,10 @@ This project adheres to the research rules defined in `PROTOCOL.md`.
 * **Blank-value behavior**: Must not be blank.
 
 ### `comparison_group`
-* **Purpose**: Group ID or category for comparability assessment.
+* **Purpose**: Candidate comparison-group ID or category used to screen recommendations that appear potentially comparable based on broad characteristics. Membership does not establish clinical equivalence or direct comparability; final assessment uses `comparable_status` after all materially relevant context is considered.
 * **Data type**: String
 * **Requirement**: Optional
-* **Blank-value behavior**: Leave blank until comparability is assessed.
+* **Blank-value behavior**: Leave blank until candidate grouping is performed.
 
 ### `comparable_status`
 * **Purpose**: Assessment of whether this can be safely compared to other records.

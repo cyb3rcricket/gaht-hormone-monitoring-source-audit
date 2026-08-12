@@ -7,7 +7,7 @@
 **Intended use:** Research methodology and reproducibility
 **Clinical use:** Prohibited
 **Protocol owner and human verifier:** Tommi
-**Last updated:** 2026-08-02
+**Last updated:** 2026-08-11
 
 ---
 
@@ -67,6 +67,18 @@ This project will not determine which hormone concentration is medically correct
 8. How often do documents direct readers to use local laboratory reference ranges or individualized treatment goals rather than a universal numerical interval?
 
 9. Where are recommendations ambiguous, incomplete, internally inconsistent, or dependent on another source?
+
+10. How often are recommendations directly comparable after all materially relevant contextual dimensions are considered?
+
+11. Which documented contextual differences most often prevent direct comparison or require a qualified comparison?
+
+12. How often do apparently similar recommendations share a documented upstream source or dependency rather than representing independent guidance?
+
+13. How often are materially relevant contextual elements—including specimen timing, route, formulation, treatment phase, assay or laboratory context, and analyte specificity such as `total_testosterone` versus `testosterone_unspecified`—absent, ambiguous, or not specified?
+
+14. How does preserving the full documented context of recommendations affect their apparent similarity across sources?
+
+These questions concern documentary structure, provenance, and comparability. They do not evaluate clinical correctness, effectiveness, or superiority.
 
 ---
 
@@ -267,6 +279,7 @@ The planned public structure is:
 .
 ├── PROTOCOL.md
 ├── README.md
+├── FINDINGS.md
 ├── LICENSE
 ├── data/
 │   ├── sources.csv
@@ -898,6 +911,10 @@ Repeated recommendations may be compared as documentary statements, but they mus
 
 ## 23. Comparability Rules
 
+A **candidate comparison group** is a set of recommendations that appear potentially comparable based on broad characteristics such as analyte, therapy direction, population or recommendation structure, or other high-level features. Candidate grouping is a screening and analytical step only. Membership does not establish clinical equivalence or direct comparability and must not be based on numerical appearance alone.
+
+The existing `comparison_group` field will identify candidate comparison groups. After complete contextual extraction, each recommendation assigned to a candidate comparison group must receive its appropriate existing `comparable_status`: `directly_comparable`, `comparable_with_qualification`, `not_comparable`, or `undetermined`. That comparability classification is itself subject to the human-verification requirements in Section 19. No controlled-vocabulary or CSV-schema change is required.
+
 Two recommendations may be marked `directly_comparable` only when all materially relevant dimensions align, including:
 
 * Analyte
@@ -921,7 +938,80 @@ Visual similarity alone does not establish comparability.
 
 ## 24. Analysis Plan
 
-The initial analysis will be descriptive.
+The initial analysis will be descriptive and will use only verified records. Absence or non-specification of a contextual field is a documentary completeness observation; it must not be characterized as a flaw in a guidance document unless the verified analysis independently supports that interpretation.
+
+### 24.1 Required Descriptive Analyses
+
+Where supported by the verified dataset, the analysis must report the following for each source and overall.
+
+#### A. Context completeness
+
+Describe and count how often in-scope recommendations specify or do not specify materially relevant contextual dimensions, including, where applicable:
+
+* Specimen timing
+* Route
+* Formulation
+* Treatment phase
+* Assay or laboratory context
+* Analyte specificity, especially `total_testosterone` versus `testosterone_unspecified`
+
+Blank, ambiguous, unresolved, and `not_specified` values must remain distinguishable where the data permit. Missing information must not be inferred.
+
+#### B. Comparability
+
+For the initial analysis, the primary quantitative unit is the recommendation record assigned to a candidate `comparison_group`. Report the number of candidate-grouped recommendation records by final `comparable_status`: `directly_comparable`, `comparable_with_qualification`, `not_comparable`, or `undetermined`. Candidate comparison groups may also be summarized narratively. Preserve and summarize the documented reasons that comparisons fail or require qualification. Candidate grouping must not be presented as establishing a valid clinical comparison.
+
+#### C. Source provenance and dependency
+
+Report recommendation-level provenance classifications as `original`, `adapted`, `reproduced`, `derived`, `unclear`, or `not_applicable`, as appropriate. Identify documented cases in which apparently similar recommendations share an upstream source or dependency.
+
+Shared wording or numerical similarity must not be treated as proof of dependency without supporting source evidence. Repeated or dependent recommendations must not be counted as independent confirmations of underlying clinical evidence.
+
+#### D. Recommendation structure
+
+Describe the distribution of and cross-source differences among the recommendation types permitted by this protocol:
+
+* Target intervals
+* Upper and lower thresholds
+* Physiologic-range instructions
+* Laboratory-reference-range instructions
+* Monitoring-frequency instructions
+* Specimen-timing instructions
+* Qualitative instructions
+* Conditional action thresholds
+
+Distinct recommendation types must not be collapsed merely to permit numerical comparison.
+
+#### E. Ambiguity and unspecified context
+
+Report which materially relevant contextual fields are most often unresolved, ambiguous, blank, or `not_specified`. Do not infer missing information or treat non-specification as evidence of a clinical deficiency.
+
+### 24.2 Contextual Attrition Analysis
+
+For this project, **contextual attrition** means the descriptive change in the status distribution of recommendation records assigned to candidate comparison groups when the protocol's full contextual comparability criteria are applied. The attrition applies to apparent comparison opportunities represented by candidate-grouped recommendation records, not to removal of recommendations or source evidence: no source record is removed, and no context is deliberately discarded.
+
+The analysis must describe:
+
+1. The recommendation records assigned to candidate comparison groups based on broad features.
+2. The application of all materially relevant contextual comparability criteria.
+3. The number of candidate-grouped recommendation records with a final `comparable_status` of `directly_comparable`, `comparable_with_qualification`, `not_comparable`, or `undetermined`.
+
+The initial candidate stage must not be presented as a valid clinical comparison. Numerical similarity alone does not establish equivalence. The initial analysis must not count every possible pairwise combination of records as a separate comparison opportunity, and it requires no pairwise-comparison identifiers or new CSV fields. Any future formal pairwise-comparison analysis requiring a new unit of analysis must be explicitly defined and, if material, documented in a later protocol amendment. Contextual attrition describes how the status distribution of candidate-grouped recommendation records changes once documented context is preserved. No inferential statistics are required.
+
+### 24.3 Human-Readable Findings Deliverable
+
+`FINDINGS.md` is a required final analytical deliverable before the first completed research release. It must provide a plain-language, evidence-linked narrative synthesis of the verified source audit and, as supported by the final data, address:
+
+* What the source audit found
+* How comparable recommendations actually were
+* Which contextual dimensions most often affected comparability
+* Context-completeness and ambiguity patterns
+* Documented source dependencies and recommendation-level provenance
+* Important patterns in recommendation structure
+* Major limitations
+* Conclusions the project does not support
+
+`FINDINGS.md` must rely only on verified records, remain documentary rather than prescriptive, avoid patient-specific clinical interpretation, avoid declaring a correct hormone range or constructing a synthetic consensus, and link findings to the underlying auditable data and evidence notes where practical. It must not be created before verified data support its findings.
 
 Permitted outputs may include:
 
@@ -935,6 +1025,7 @@ Permitted outputs may include:
 * Tables displaying verified recommendations and their contexts
 * Source-dependency maps
 * Narrative comparisons
+* Contextual-attrition counts and narrative summaries
 
 The analysis must not calculate:
 
@@ -1096,7 +1187,9 @@ The source-audit phase is complete only when:
 * All included recommendations have completed human verification.
 * Source dependencies have been assessed.
 * Comparability has been assessed.
+* The required descriptive and contextual-attrition analyses have been completed using only verified records.
 * Outstanding ambiguities are documented.
+* `FINDINGS.md` provides the required evidence-linked narrative synthesis of the verified audit.
 * Validation tests pass.
 * The README accurately describes the completed work.
 * No unsupported clinical claims remain.
@@ -1115,6 +1208,8 @@ A first public research release may be considered only after:
 * The analysis script reads only verified data.
 * Required tests pass.
 * All figures accurately preserve context.
+* The required descriptive and contextual-attrition analyses are complete.
+* `FINDINGS.md` is complete, evidence-linked, and limited to conclusions supported by verified records.
 * Limitations are prominently documented.
 * Citation metadata contains real, verified author and repository information.
 * No placeholder metadata remains.
@@ -1153,6 +1248,7 @@ Until all criteria are satisfied:
 | 0.1     | 2026-08-02 | Draft  | Initial protocol for a reproducible source audit of selected adult GAHT monitoring guidance documents |
 | 0.2     | 2026-08-02 | Draft  | Defined machine-readable controlled vocabularies for nine previously unresolved source- and recommendation-level fields. |
 | 0.3     | 2026-08-02 | Draft  | Added testosterone_unspecified, conditional_action_threshold, numerical physiologic_range rules, and comparability restrictions. |
+| 0.4     | 2026-08-11 | Draft  | Prespecified contextual-completeness, source-dependency, recommendation-structure, ambiguity, and cross-document comparability analyses; introduced candidate comparison groups and contextual-attrition analysis; and required a final human-readable findings report. |
 
 ### Amendment 0.2
 * Amendment/version: 0.2
@@ -1171,3 +1267,12 @@ Until all criteria are satisfied:
 * Effect on existing records: none; both CSV files remain header-only.
 * Prior extraction re-review required: no; no committed recommendation records exist.
 * Human approval: Tommi, through explicit authorization of the Amendment 0.3 decision and implementation.
+
+### Amendment 0.4
+* Amendment/version: 0.4
+* Date: 2026-08-11
+* Description: Prespecified contextual-completeness, source-dependency, recommendation-structure, ambiguity, and cross-document comparability analyses; introduced candidate comparison groups and contextual-attrition analysis; and required a final human-readable findings report.
+* Reason: Ensure that the completed source audit evaluates how context and provenance affect apparent agreement and comparability among GAHT hormone-monitoring recommendations rather than functioning solely as a catalogue of extracted guidance.
+* Effect on existing records: None. The amendment uses information already represented by the existing source and recommendation schemas and evidence-note structure.
+* Prior extraction re-review required: No, solely because of this amendment. Existing records continue through their already-required verification and review process.
+* Human approval: Tommi explicitly approved Amendment 0.4 before continued SRC0001 extraction.

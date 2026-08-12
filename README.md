@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository is an early research scaffold for a reproducible documentary audit of how selected gender-affirming hormone therapy guidance documents describe adult serum estradiol and testosterone monitoring recommendations.
+This repository is an early research scaffold for a reproducible documentary audit of how selected gender-affirming hormone therapy guidance documents describe adult serum estradiol and testosterone monitoring recommendations, including how documented context and provenance affect their apparent comparability.
 
 The project is designed to preserve the context surrounding each recommendation, including:
 
@@ -69,9 +69,10 @@ The planned workflow is:
 4. Extract recommendations with complete context.
 5. Human-verify every included recommendation.
 6. Assess source dependencies and comparability.
-7. Implement validation and descriptive analysis.
-8. Consider visualizations only when the verified data support them.
-9. Review the repository against the release criteria in `PROTOCOL.md`.
+7. Implement validation and the prespecified descriptive and contextual-attrition analyses.
+8. Prepare an evidence-linked `FINDINGS.md` narrative using only verified records.
+9. Consider visualizations only when the verified data support them.
+10. Review the repository against the release criteria in `PROTOCOL.md`.
 
 ## Initial Candidate Sources
 
