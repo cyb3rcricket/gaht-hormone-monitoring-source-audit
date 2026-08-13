@@ -1,5 +1,11 @@
 # Antigravity Local Agent Context & Scratchpad
-.agents/
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/gaht-guidance-source-audit/
+!.agents/skills/gaht-guidance-source-audit/**
+!.agents/skills/pubmed-source-resolution/
+!.agents/skills/pubmed-source-resolution/**
 .agent/
 .env
 .scratchpad/
