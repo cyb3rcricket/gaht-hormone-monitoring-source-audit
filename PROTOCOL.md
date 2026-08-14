@@ -3,11 +3,11 @@
 ## Serum Hormone Monitoring Recommendations in Selected GAHT Guidance Documents: A Reproducible Source Audit
 
 **Protocol status:** Draft
-**Project status:** Source verification not yet begun
+**Project status:** Source extraction and human verification in progress
 **Intended use:** Research methodology and reproducibility
 **Clinical use:** Prohibited
 **Protocol owner and human verifier:** Tommi
-**Last updated:** 2026-08-11
+**Last updated:** 2026-08-12
 
 ---
 
