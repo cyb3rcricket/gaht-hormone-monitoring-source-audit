@@ -4,7 +4,7 @@ Original upstream:
 google-deepmind/science-skills
 
 Reference fork:
-madebytommi/science-skills
+cyb3rcricket/science-skills
 
 Source skill:
 skills/pubmed_database
@@ -39,7 +39,7 @@ The local `search-and-discovery.md`, `fetch-and-resolve.md`, and `citation-match
 
 ## Licensing
 
-The pinned reference fork's [README licensing terms](https://github.com/madebytommi/science-skills/blob/0b42509800f49e6eb7809505d96e20a890ef99bd/README.md#licensing--disclaimer) state that software is licensed under Apache 2.0 and all other materials are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+The pinned reference fork's [README licensing terms](https://github.com/cyb3rcricket/science-skills/blob/0b42509800f49e6eb7809505d96e20a890ef99bd/README.md#licensing--disclaimer) state that software is licensed under Apache 2.0 and all other materials are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 Accordingly:
 
