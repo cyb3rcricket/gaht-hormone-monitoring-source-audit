@@ -1,6 +1,6 @@
 # Targeted PubMed search and discovery
 
-> **Upstream attribution:** Adapted from Google LLC's [Science Skills `search-and-discovery.md`](https://github.com/madebytommi/science-skills/blob/0b42509800f49e6eb7809505d96e20a890ef99bd/skills/pubmed_database/references/search-and-discovery.md), copyright 2026 Google LLC, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode). Modified for this repository to limit search to bibliographic and provenance resolution. The upstream material and this derivative are provided without warranties; this is not an official Google product.
+> **Upstream attribution:** Adapted from Google LLC's [Science Skills `search-and-discovery.md`](https://github.com/cyb3rcricket/science-skills/blob/0b42509800f49e6eb7809505d96e20a890ef99bd/skills/pubmed_database/references/search-and-discovery.md), copyright 2026 Google LLC, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode). Modified for this repository to limit search to bibliographic and provenance resolution. The upstream material and this derivative are provided without warranties; this is not an official Google product.
 
 Use `search_pubmed` only to resolve a known or incomplete publication, DOI, correction, corrigendum, or explicitly documented upstream reference. Do not use it to discover clinical recommendations or expand the evidence base.
 
