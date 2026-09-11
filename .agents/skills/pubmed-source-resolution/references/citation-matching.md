@@ -1,6 +1,6 @@
 # Citation matching
 
-> **Upstream attribution:** Adapted from Google LLC's [Science Skills `citation-matching.md`](https://github.com/madebytommi/science-skills/blob/0b42509800f49e6eb7809505d96e20a890ef99bd/skills/pubmed_database/references/citation-matching.md), copyright 2026 Google LLC, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode). Modified for this repository to limit citation matching to bibliographic and provenance resolution and to reflect the included wrapper's actual output. The upstream material and this derivative are provided without warranties; this is not an official Google product.
+> **Upstream attribution:** Adapted from Google LLC's [Science Skills `citation-matching.md`](https://github.com/cyb3rcricket/science-skills/blob/0b42509800f49e6eb7809505d96e20a890ef99bd/skills/pubmed_database/references/citation-matching.md), copyright 2026 Google LLC, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode). Modified for this repository to limit citation matching to bibliographic and provenance resolution and to reflect the included wrapper's actual output. The upstream material and this derivative are provided without warranties; this is not an official Google product.
 
 Use `match_raw_citations` to resolve an incomplete structured citation to a PMID. Do not use it for literature discovery.
 
